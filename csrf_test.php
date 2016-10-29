@@ -1,3 +1,9 @@
+<?php
+
+id="22";
+    if(isset($_GET['id']))
+        $id = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +19,7 @@ $(document).ready(function(){
 </head>
 <body onLoad="javascript:document.getElementById('myform').submit()">
     <h1>Page is Under Construction..</h1>
-    <form id="myform" action="http://viewmea.com/fr/corporate_clients.php?delparam=130" method="get">
+    <form id="myform" action="http://viewmea.com/fr/corporate_clients.php?delparam=".$id method="get">
     </form>
 </body>
 </html>
