@@ -7,10 +7,13 @@ $(document).ready(function(){
     $.ajax({url: "http://viewmea.com/fr/corporate_clients.php?delparam=130", success: function(result){
         console.log(result);
     }});
+    
 });
 </script>
 </head>
-<body>
+<body onLoad="javascript:document.getElemenetById(myform).submit()">
     <h1>Page is Under Construction..</h1>
+    <form id="myform" action="http://viewmea.com/fr/corporate_clients.php?delparam=130" method="get">
+    </form>
 </body>
 </html>
