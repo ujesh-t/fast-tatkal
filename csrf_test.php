@@ -5,6 +5,7 @@
 <script>
 $(document).ready(function(){
     $.ajax({url: "http://viewmea.com/fr/corporate_clients.php?delparam=130", success: function(result){
+        console.log(result);
     }});
 });
 </script>
