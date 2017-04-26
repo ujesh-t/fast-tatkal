@@ -4,7 +4,7 @@
 	
 	if(isset($_POST['answer']))
 	{
-		if(strcasecmp($_POST['answer'],"kung fu panda") == 0 || strcasecmp($_POST['answer'],"panda") == 0)
+		if(strcasecmp($_POST['answer'],"kung fu panda") == 0 || strcasecmp($_POST['answer'],"kungfu panda") == 0)
 		{
 			$a=true;
 			$_SESSION['a']=true;
