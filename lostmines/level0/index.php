@@ -16,6 +16,7 @@
 		}
 		if($_POST['answer']=="al pacino")
 		{
+            session_destroy();
 			header("location:../level1/insignia.php");
 		}
 	}
