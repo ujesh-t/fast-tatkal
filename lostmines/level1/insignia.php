@@ -17,7 +17,8 @@
 		if(strcasecmp($_POST['answer'],"harry potter")==0)
 		{
             $_SESSION['a']=false;
-            $_SESSION['b']=false;            
+            $_SESSION['b']=false;  
+            session_destroy();            
 			header("location:../level2/n.php");
 		}
 	}

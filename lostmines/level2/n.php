@@ -17,7 +17,8 @@
 		if(strcasecmp($_POST['answer'],"fibonacci") ==0 || strcasecmp($_POST['answer'],"fibonacci series") == 0 )
 		{
             $_SESSION['a']=false;
-            $_SESSION['b']=false;            
+            $_SESSION['b']=false;     
+            session_destroy();            
 			header("location:../level3/cem.php");
 		}
 	}
