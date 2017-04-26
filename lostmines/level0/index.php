@@ -16,7 +16,7 @@
 		}
 		if($_POST['answer']=="al pacino")
 		{
-			header("location:successs.php");
+			header("location:../level1/insignia.php");
 		}
 	}
 	
