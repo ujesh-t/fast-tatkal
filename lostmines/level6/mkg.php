@@ -14,7 +14,7 @@
 		{
             $_SESSION['a']=false;
             $_SESSION['b']=false;            
-			header("location:successs.php");
+			header("location:../level7/jdk.php");
 		}
 	}
 	

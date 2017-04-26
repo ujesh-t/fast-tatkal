@@ -18,7 +18,7 @@
 		{
             $_SESSION['a']=false;
             $_SESSION['b']=false;            
-			header("location:successs.php");
+			header("location:../level3/cem.php");
 		}
 	}
 	
