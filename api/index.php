@@ -1,5 +1,10 @@
 <?php
 
+
+# Include the Autoloader (see "Libraries" for install instructions)
+require 'vendor/autoload.php';
+use Mailgun\Mailgun;
+
 $priceList = ["B01FQR7LTE" => "1200"];
 
 
@@ -10,6 +15,20 @@ foreach($priceList as $key => $value) {
     $latestPrice = $response->query->results->span->content;
     echo(intval(str_replace(",","",$latestPrice)));
     if(intval(str_replace(",","",$latestPrice)) <= $value){
+        
+        # Instantiate the client.
+        $mgClient = new Mailgun('key-d0d33bb51656238696511aa61060ac63');
+        $domain = "sandbox38f1a15ad1054acbb9634907a86ce965.mailgun.org";
+
+        # Make the call to the client.
+        $result = $mgClient->sendMessage($domain, array(
+            'from'    => 'Excited User <ujesh.t@gmail.com>',
+            'to'      => 'Ujesh <ujesh.t@gmail.com>',
+            'subject' => 'Hello',
+            'text'    => 'Testing some Mailgun awesomness!'
+        ));
+
+        
     } else {
     }
     
