@@ -18,7 +18,7 @@ foreach($priceList as $key => $value) {
         
         # Instantiate the client.
         $mgClient = new Mailgun('key-d0d33bb51656238696511aa61060ac63');
-        $domain = "sandbox38f1a15ad1054acbb9634907a86ce965.mailgun.org";
+        $domain = "https://api.mailgun.net/v3/mansooniscoming.info";
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
@@ -35,7 +35,7 @@ foreach($priceList as $key => $value) {
             'from'    => 'Excited User <ujesh.t@gmail.com>',
             'to'      => 'Ujesh <ujesh.t@gmail.com>',
             'subject' => 'Hello',
-            'text'    => 'Testing some Mailgun awesomness!'
+            'text'    => 'Testing some Mailgun awesomness<<<!'
         ));
     }
     
