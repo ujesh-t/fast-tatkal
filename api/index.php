@@ -30,6 +30,13 @@ foreach($priceList as $key => $value) {
 
         
     } else {
+        # Make the call to the client.
+        $result = $mgClient->sendMessage($domain, array(
+            'from'    => 'Excited User <ujesh.t@gmail.com>',
+            'to'      => 'Ujesh <ujesh.t@gmail.com>',
+            'subject' => 'Hello',
+            'text'    => 'Testing some Mailgun awesomness!'
+        ));
     }
     
 }
