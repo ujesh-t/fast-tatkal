@@ -13,12 +13,13 @@ foreach($priceList as $key => $value) {
     $response = file_get_contents($url);
     $response = json_decode($response);
     $latestPrice = $response->query->results->span->content;
+    # Instantiate the client.
+    $mgClient = new Mailgun('key-d0d33bb51656238696511aa61060ac63');
+    $domain = "mansooniscoming.info";
+
     echo(intval(str_replace(",","",$latestPrice)));
     if(intval(str_replace(",","",$latestPrice)) <= $value){
         
-        # Instantiate the client.
-        $mgClient = new Mailgun('key-d0d33bb51656238696511aa61060ac63');
-        $domain = "https://api.mailgun.net/v3/mansooniscoming.info";
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
