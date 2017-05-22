@@ -6,7 +6,8 @@ require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 
 $priceList = [
-    "B01FQR7LTE" => array("price" => "1200", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh")
+    "B01FQR7LTE" => array("price" => "1200", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01M9C51T9" => array("price" => "460",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
  ];
 
 
@@ -21,8 +22,7 @@ foreach($priceList as $key => $value) {
 
     echo(intval(str_replace(",","",$latestPrice)));
     echo(" => ".$value['price']);
-    if(intval(str_replace(",","",$latestPrice)) <= $value){
-        
+    if(intval(str_replace(",","",$latestPrice)) <= $value){     
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
