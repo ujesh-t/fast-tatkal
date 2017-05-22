@@ -22,7 +22,7 @@ foreach($priceList as $key => $value) {
 
     echo(intval(str_replace(",","",$latestPrice)));
     echo(" => ".$value['price']);
-    if(intval(str_replace(",","",$latestPrice)) <= $value){     
+    if(intval(str_replace(",","",$latestPrice)) <= $value['price']){     
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
