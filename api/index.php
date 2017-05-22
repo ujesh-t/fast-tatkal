@@ -5,7 +5,9 @@
 require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 
-$priceList = ["B01FQR7LTE" => "1200"];
+$priceList = [
+    "B01FQR7LTE" => array("price" => "1200", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh")
+ ];
 
 
 foreach($priceList as $key => $value) {
@@ -18,26 +20,21 @@ foreach($priceList as $key => $value) {
     $domain = "mansooniscoming.info";
 
     echo(intval(str_replace(",","",$latestPrice)));
+    echo(" => ".$value['price']);
     if(intval(str_replace(",","",$latestPrice)) <= $value){
         
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
-            'from'    => 'Excited User <ujesh.t@gmail.com>',
-            'to'      => 'Ujesh <ujesh.t@gmail.com>',
-            'subject' => 'Hello',
-            'text'    => 'Testing some Mailgun awesomness!'
+            'from'    => 'Ujesh Lal <ujesh.t@gmail.com>',
+            'to'      => $value['name'].' <'.$value['notify'].'>',
+            'subject' => 'Price Drop Alert for '.$key,
+            'text'    => 'Congrats Price for the Item is dropped to '.$latestPrice.'!'
         ));
 
         
     } else {
-        # Make the call to the client.
-        $result = $mgClient->sendMessage($domain, array(
-            'from'    => 'Excited User <ujesh.t@gmail.com>',
-            'to'      => 'Ujesh <ujesh.t@gmail.com>',
-            'subject' => 'Hello',
-            'text'    => 'Testing some Mailgun awesomness<<<!'
-        ));
+
     }
     
 }
