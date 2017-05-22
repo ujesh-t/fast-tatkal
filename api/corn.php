@@ -7,7 +7,7 @@ use Mailgun\Mailgun;
 
 $priceList = [
     "B01FQR7LTE" => array("price" => "1200", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
-    "B01M9C51T9" => array("price" => "500",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01M9C51T9" => array("price" => "450",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
  ];
 
 
