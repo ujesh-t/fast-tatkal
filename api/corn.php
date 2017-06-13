@@ -1,63 +1,69 @@
 <?php
+namespace Acme\Demo;
 
+require_once dirname(__FILE__). '/vendor/autoload.php';
 
-# Include the Autoloader (see "Libraries" for install instructions)
-require 'vendor/autoload.php';
+use ApaiIO\Configuration\GenericConfiguration;
+use ApaiIO\Operations\Search;
+use ApaiIO\Operations\Lookup;
+use ApaiIO\ApaiIO;
 use Mailgun\Mailgun;
 
+
 $priceList = [
-    "B01FQR7LTE" => array("price" => "1200", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
-    "B01M9C51T9" => array("price" => "450",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01FQR7LTE" => array("price" => "220000", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01M9C51T9" => array("price" => "55000",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
  ];
 
+$conf = new \ApaiIO\Configuration\GenericConfiguration();
+$client = new \Guzzle\Http\Client();
+//$request = new \ApaiIO\Request\GuzzleRequest($client);
 
-foreach($priceList as $key => $value) {
-    $url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%27http%3A%2F%2Fwww.paisaless.in%2Fproduct%2Famazon%2F$key%27%20and%20xpath%3D%27%2F%2Fspan%5B%40class%3D%22product__price%22%5D%27&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-    $response = file_get_contents($url);
-    $response = json_decode($response);
-    $latestPrice = $response->query->results->span->content;
-    # Instantiate the client.
+$conf
+    ->setCountry('in')
+    ->setAccessKey("AKIAIQ5C4O5NMVZTODUQ")
+    ->setSecretKey("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")
+    ->setAssociateTag("persblog0a8-21")
+    ->setResponseTransformer(new \ApaiIO\ResponseTransformer\XmlToSimpleXmlObject());
+    //->setRequest($request);
+$apaiIO = new ApaiIO($conf);
+
+//$search = new Search();
+//$search->setCategory('DVD');
+//$search->setActor('Bruce Willis');
+//$search->setKeywords('Die Hard');
+
+//$formattedResponse = $apaiIO->runOperation($search);
+
+//var_dump($formattedResponse);
+$lookUp = new Lookup();
+$lookUp->setItemIds(array_keys($priceList));
+$lookUp->setResponseGroup(array('Offers'));
+$formattedResponse = $apaiIO->runOperation($lookUp);
+//var_dump($formattedResponse);
+foreach($formattedResponse->Items->Item as $i){
+    $asin = $i->ASIN;
+    //var_dump($i);
+    echo $asin;
+    $value = $priceList[trim($asin)];
+    $lowestPrice = $i->OfferSummary->LowestNewPrice;
+    echo $lowestPrice->FormattedPrice;
+    
     $mgClient = new Mailgun('key-d0d33bb51656238696511aa61060ac63');
     $domain = "mansooniscoming.info";
 
-    echo(intval(str_replace(",","",$latestPrice)));
+    echo(intval(str_replace(",","",$lowestPrice->Amount)));
     echo(" => ".$value['price']);
-    if(intval(str_replace(",","",$latestPrice)) <= $value['price']){     
+    if(str_replace(",","",$lowestPrice->Amount))
+    if(intval(str_replace(",","",$lowestPrice->Amount)) <= $value['price']){     
 
         # Make the call to the client.
         $result = $mgClient->sendMessage($domain, array(
             'from'    => 'Ujesh Lal <ujesh.t@gmail.com>',
             'to'      => $value['name'].' <'.$value['notify'].'>',
-            'subject' => 'Price Drop Alert for '.$key,
-            'text'    => 'Congrats Price for the Item is dropped to '.$latestPrice.'!'
-        ));
-
-        
-    } else {
-
-    }
+            'subject' => 'Price Drop Alert for '.$asin,
+            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!<br>'.$i->Offers->MoreOffersUrl
+        ));        
+    } 
     
 }
-
-
-/*
-$ch = curl_init($url);
-//curl_setopt($ch, CURLOPT_URL, $url);
-//curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-//curl_setopt($ch, CURLOPT_POSTFIELDS, POST DATA);
-$result = curl_exec($ch);
-
-echo "calling";
-print_r($result);
-var_dump($result);
-echo "called";
-curl_close($ch);
-
-
-echo "_____________________________";
-
-print_r($response);
-
-echo();
-*/

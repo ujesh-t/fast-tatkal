@@ -10,4 +10,5 @@ return array(
     'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
     'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
     'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
+    'ApaiIO' => array($vendorDir . '/exeu/apai-io/lib'),
 );

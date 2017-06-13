@@ -4,9 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af4fc1d14d56fdd83aef552937018111",
-    "content-hash": "746370a8c32788e817b025b9335c5929",
+    "hash": "8536e179fc33256fcaca220c061e4ca8",
+    "content-hash": "b9b184ca65309d7f7c6f4fd1aaa35229",
     "packages": [
+        {
+            "name": "exeu/apai-io",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Exeu/apai-io.git",
+                "reference": "d8a0009a262d77f96eeb6deb930b3ab0562d1ac3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Exeu/apai-io/zipball/d8a0009a262d77f96eeb6deb930b3ab0562d1ac3",
+                "reference": "d8a0009a262d77f96eeb6deb930b3ab0562d1ac3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mayflower/php-codebrowser": "1.*",
+                "pdepend/pdepend": "2.*",
+                "phploc/phploc": "2.*",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "4.5.*",
+                "sebastian/phpcpd": "2.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ApaiIO": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Eichhorn",
+                    "email": "exeu65@googlemail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Dejan Spasic",
+                    "email": "dejan.spasic@bitweise.biz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Amazon Product Advertising PHP Library",
+            "homepage": "https://github.com/Exeu/apai-io",
+            "keywords": [
+                "ECS",
+                "Product Advertising",
+                "amazon",
+                "products",
+                "rest",
+                "soap"
+            ],
+            "time": "2016-03-08 07:37:18"
+        },
         {
             "name": "guzzle/guzzle",
             "version": "v3.9.3",
@@ -145,16 +206,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "7fc8e2b4118ff316550596357325dfd92a51f531"
+                "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/7fc8e2b4118ff316550596357325dfd92a51f531",
-                "reference": "7fc8e2b4118ff316550596357325dfd92a51f531",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/1377400fd641d7d1935981546aaef780ecd5bf6d",
+                "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +262,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-26 16:56:54"
+            "time": "2017-06-02 07:47:27"
         }
     ],
     "packages-dev": [],

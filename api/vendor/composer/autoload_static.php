@@ -43,6 +43,13 @@ class ComposerStaticInit7458a6f03733dd11b11fb348184c824c
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
             ),
         ),
+        'A' => 
+        array (
+            'ApaiIO' => 
+            array (
+                0 => __DIR__ . '/..' . '/exeu/apai-io/lib',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
