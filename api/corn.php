@@ -11,8 +11,8 @@ use Mailgun\Mailgun;
 
 
 $priceList = [
-    "B01FQR7LTE" => array("price" => "220000", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
-    "B01M9C51T9" => array("price" => "55000",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01FQR7LTE" => array("price" => "120000", "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
+    "B01M9C51T9" => array("price" => "45000",  "notify" => "ujesh.t@gmail.com", "name" => "Ujesh"),
  ];
 
 $conf = new \ApaiIO\Configuration\GenericConfiguration();
@@ -54,7 +54,7 @@ foreach($formattedResponse->Items->Item as $i){
             'from'    => 'Ujesh Lal <ujesh.t@gmail.com>',
             'to'      => $value['name'].' <'.$value['notify'].'>',
             'subject' => 'Price Drop Alert for '.$asin,
-            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!!!'."\n\n".$i->Offers->MoreOffersUrl
+            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.' !!!'."\n\n".$i->Offers->MoreOffersUrl
         ));        
     } 
     
