@@ -25,17 +25,9 @@ $conf
     ->setSecretKey("+mz78taq9JxNwz4J7cyD7WE61qxjJ2maswwEHlH6")
     ->setAssociateTag("persblog0a8-21")
     ->setResponseTransformer(new \ApaiIO\ResponseTransformer\XmlToSimpleXmlObject());
-    //->setRequest($request);
 $apaiIO = new ApaiIO($conf);
 
-//$search = new Search();
-//$search->setCategory('DVD');
-//$search->setActor('Bruce Willis');
-//$search->setKeywords('Die Hard');
 
-//$formattedResponse = $apaiIO->runOperation($search);
-
-//var_dump($formattedResponse);
 $lookUp = new Lookup();
 $lookUp->setItemIds(array_keys($priceList));
 $lookUp->setResponseGroup(array('Offers'));
@@ -62,7 +54,7 @@ foreach($formattedResponse->Items->Item as $i){
             'from'    => 'Ujesh Lal <ujesh.t@gmail.com>',
             'to'      => $value['name'].' <'.$value['notify'].'>',
             'subject' => 'Price Drop Alert for '.$asin,
-            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!\n\n'.$i->Offers->MoreOffersUrl
+            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!!!'."\n\n".$i->Offers->MoreOffersUrl
         ));        
     } 
     
