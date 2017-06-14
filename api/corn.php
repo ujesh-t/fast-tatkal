@@ -62,7 +62,7 @@ foreach($formattedResponse->Items->Item as $i){
             'from'    => 'Ujesh Lal <ujesh.t@gmail.com>',
             'to'      => $value['name'].' <'.$value['notify'].'>',
             'subject' => 'Price Drop Alert for '.$asin,
-            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!<br>'.$i->Offers->MoreOffersUrl
+            'text'    => 'Congrats Price for the Item is dropped to '.$lowestPrice->FormattedPrice.'!\n\n'.$i->Offers->MoreOffersUrl
         ));        
     } 
     
